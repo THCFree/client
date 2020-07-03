@@ -6,7 +6,7 @@ import club.minnced.discord.rpc.DiscordRichPresence;
 import net.minecraft.client.Minecraft;
 
 public class OsirisRPC {
-    private static final String ClientId = "728460198284361750";
+    private static final String ClientId = "663095007246417923";
     private static final Minecraft mc = Minecraft.getMinecraft();
     private static final DiscordRPC rpc = DiscordRPC.INSTANCE;
     public static DiscordRichPresence presence = new DiscordRichPresence();
@@ -18,28 +18,28 @@ public class OsirisRPC {
         handlers.disconnected = ((var1, var2) -> System.out.println("Discord RPC disconnected, var1: " + String.valueOf(var1) + ", var2: " + var2));
         rpc.Discord_Initialize(ClientId, handlers, true, "");
         presence.startTimestamp = System.currentTimeMillis() / 1000L;
-        presence.details = mc.player.getName();
+        presence.details = "Version " + OsirisMod.MODVER;
         presence.state = "Main Menu";
-        presence.largeImageKey = "osirisplus";
-        presence.largeImageText = "Osiris+ " + OsirisMod.MODVER;
+        presence.largeImageKey = "gradient";
+        presence.largeImageText = "Osiris+";
 
         rpc.Discord_UpdatePresence(presence);
         new Thread(() -> {
             while (!Thread.currentThread().isInterrupted()) {
                 try {
                     rpc.Discord_RunCallbacks();
-                    details = mc.player.getName();
+                    details = "Version " + OsirisMod.MODVER;
                     state = "";
                     if (mc.isIntegratedServerRunning()) {
-                        state = "Singleplayer";
+                        state = "Playing Singleplayer";
                     }
                     else if (mc.getCurrentServerData() != null) {
                         if (!mc.getCurrentServerData().serverIP.equals("")) {
-                            state = mc.getCurrentServerData().serverIP;
-                        }
+                                    state = "Playing " + mc.getCurrentServerData().serverIP;
+                                }
 
                     } else {
-                        state = "Main Menu";
+                            state = "Main Menu";
                     }
                     if (!details.equals(presence.details) || !state.equals(presence.state)) {
                         presence.startTimestamp = System.currentTimeMillis() / 1000L;
