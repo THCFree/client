@@ -31,6 +31,7 @@ public class ModuleManager {
         addMod(new Surround());
         addMod(new AutoOffhand());
         addMod(new AutoTrap());
+		addMod(new AutoTotem());
         addMod(new HoleFill());
         addMod(new Criticals());
         addMod(new SmartOffhand());

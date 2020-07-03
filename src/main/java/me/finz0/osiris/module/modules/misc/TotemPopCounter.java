@@ -19,7 +19,7 @@ import java.util.HashMap;
 
 public class TotemPopCounter extends Module {
     public TotemPopCounter() {
-        super("TotemPopCounter", Category.MISC, "Broken");
+        super("TotemPopCounter", Category.MISC, "Tells you who popped and how many times they have in chat");
     }
 
     private HashMap<String, Integer> playerList;
