@@ -59,10 +59,10 @@ public class PvpinfoComponent extends Panel {
             } else{
                 drawText("KillAura OFF", (int)x, (int)startY + 10, off.getRGB());
             }
-            if(ModuleManager.isModuleEnabled("Surround")){
-                drawText("Surround ON", (int)x, (int)startY + 20, on.getRGB());
+            if(ModuleManager.isModuleEnabled("AutoFeetPlace")){
+                drawText("AutoFeetPlace ON", (int)x, (int)startY + 20, on.getRGB());
             } else{
-                drawText("Surround OFF", (int)x, (int)startY + 20, off.getRGB());
+                drawText("AutoFeetPlace OFF", (int)x, (int)startY + 20, off.getRGB());
             }
         }
     }
@@ -91,10 +91,10 @@ public class PvpinfoComponent extends Panel {
         } else{
             drawText("KillAura OFF", (int)x, (int)y + 10, off.getRGB());
         }
-        if(ModuleManager.isModuleEnabled("Surround")){
-            drawText("Surround ON", (int)x, (int)y + 20, on.getRGB());
+        if(ModuleManager.isModuleEnabled("AutoFeetPlace")){
+            drawText("AutoFeetPlace ON", (int)x, (int)y + 20, on.getRGB());
         } else{
-            drawText("Surround OFF", (int)x, (int)y + 20, off.getRGB());
+            drawText("AutoFeetPlace OFF", (int)x, (int)y + 20, off.getRGB());
         }
     }
 }
