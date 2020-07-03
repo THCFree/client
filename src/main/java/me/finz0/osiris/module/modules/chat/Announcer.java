@@ -52,13 +52,13 @@ public class Announcer extends Module {
     public Setting clickGui;
     Setting delay;
 
-    public static String walkMessage = "I just walked {blocks} blocks thanks to Osiris!";
-    public static String placeMessage = "I just placed {amount} {name} thanks to Osiris!";
-    public static String jumpMessage = "I just jumped thanks to Osiris!";
-    public static String breakMessage = "I just broke {amount} {name} thanks to Osiris!";
-    public static String attackMessage = "I just attacked {name} with a {item} thanks to Osiris!";
-    public static String eatMessage = "I just ate {amount} {name} thanks to Osiris!";
-    public static String guiMessage = "I just opened my ClickGUI thanks to Osiris!";
+    public static String walkMessage = "I just walked {blocks} blocks thanks to Osiris+!";
+    public static String placeMessage = "I just placed {amount} {name} thanks to Osiris+!";
+    public static String jumpMessage = "I just jumped thanks to Osiris+!";
+    public static String breakMessage = "I just broke {amount} {name} thanks to Osiris+!";
+    public static String attackMessage = "I just attacked {name} with a {item} thanks to Osiris+!";
+    public static String eatMessage = "I just ate {amount} {name} thanks to Osiris+!";
+    public static String guiMessage = "I just opened my ClickGUI thanks to Osiris+!";
 
     public void setup(){
         OsirisMod.getInstance().settingsManager.rSetting(clientSide = new Setting("ClientSide", this, true, "AnnouncerClientSide"));

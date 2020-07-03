@@ -29,7 +29,7 @@ import java.awt.*;
 
 @Mod(modid = OsirisMod.MODID, name = OsirisMod.FORGENAME, version = OsirisMod.MODVER, clientSideOnly = true)
 public class OsirisMod {
-    public static final String MODID = "osiris+";
+    public static final String MODID = "osirisplus";
     public static String MODNAME = "Osiris+";
     public static final String MODVER = "2.0";
     public static final String FORGENAME = "Osiris+";

@@ -26,13 +26,11 @@ public class ModuleManager {
         modules = new ArrayList<>();
         //Combat
         addMod(new KillAura());
-		addMod(new OffHandGap());
 		addMod(new MultiTask());
         addMod(new AutoCrystal());
         addMod(new Surround());
         addMod(new AutoOffhand());
         addMod(new AutoTrap());
-        addMod(new InDevelopment());
         addMod(new HoleFill());
         addMod(new Criticals());
         addMod(new SmartOffhand());
@@ -43,7 +41,6 @@ public class ModuleManager {
         addMod(new FastUse());
         addMod(new NoSwing());
         addMod(new SpeedMine());
-        //addMod(new Freecam());
         addMod(new NoInteract());
         //Movement
         addMod(new Sprint());
@@ -53,7 +50,6 @@ public class ModuleManager {
         addMod(new ElytraFly());
         addMod(new NoSlow());
         addMod(new Speed());
-    //    addMod(new Jesus());
         //Misc
         addMod(new Timer());
         addMod(new NoEntityTrace());
@@ -62,10 +58,7 @@ public class ModuleManager {
         addMod(new RpcModule());
         addMod(new Notifications());
         addMod(new LogoutSpots());
-        addMod(new SnakeModule());
         addMod(new AutoRespawn());
-        addMod(new AutoBackdoor());
-        addMod(new CropNuker());
         addMod(new MiddleClickFriends());
         addMod(new DeathWaypoint());
         addMod(new ClinetTimer());
@@ -98,7 +91,6 @@ public class ModuleManager {
         addMod(new Tracers());
         addMod(new CsgoESP());
         addMod(new CapesModule());
-    //    addMod(new Nametags());
         addMod(new HitboxESP());
         addMod(new FovModule());
         addMod(new BoxESP());

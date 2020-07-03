@@ -1,6 +1,7 @@
 package me.finz0.osiris.module.modules.combat;
 
 import me.finz0.osiris.module.Module;
+import me.finz0.osiris.OsirisMod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.util.EnumHand;
 import net.minecraft.entity.player.EntityPlayer;
