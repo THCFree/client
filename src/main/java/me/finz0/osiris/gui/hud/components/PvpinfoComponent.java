@@ -16,10 +16,7 @@ public class PvpinfoComponent extends Panel {
     public PvpinfoComponent(double ix, double iy, ClickGUI parent) {
         super("PvpInfo", ix, iy, 10, 10, false, parent);
         this.isHudComponent = true;
-
     }
-
-
 
     PvpInfo mod = ((PvpInfo) ModuleManager.getModuleByName("PvpInfo"));
 
@@ -53,29 +50,19 @@ public class PvpinfoComponent extends Panel {
             double startY = y + height;
             Gui.drawRect((int) x, (int) startY, (int) x + (int) width, (int) startY + ((int) height + 42), c.getRGB());
             if(ModuleManager.isModuleEnabled("AutoCrystal")){
-                drawText("CA ON", (int)x, (int)startY, on.getRGB());
+                drawText("CrystalAura ON", (int)x, (int)startY, on.getRGB());
             } else{
-                drawText("CA OFF", (int)x, (int)startY, off.getRGB());
+                drawText("CrystalAura OFF", (int)x, (int)startY, off.getRGB());
             }
             if(ModuleManager.isModuleEnabled("KillAura")){
-                drawText("KA ON", (int)x, (int)startY + 10, on.getRGB());
+                drawText("KillAura ON", (int)x, (int)startY + 10, on.getRGB());
             } else{
-                drawText("KA OFF", (int)x, (int)startY + 10, off.getRGB());
+                drawText("KillAura OFF", (int)x, (int)startY + 10, off.getRGB());
             }
-            if(ModuleManager.isModuleEnabled("Surround")){
-                drawText("SU ON", (int)x, (int)startY + 20, on.getRGB());
+            if(ModuleManager.isModuleEnabled("AutoFeetPlace")){
+                drawText("AutoFeetPlace ON", (int)x, (int)startY + 20, on.getRGB());
             } else{
-                drawText("SU OFF", (int)x, (int)startY + 20, off.getRGB());
-            }
-            if(ModuleManager.isModuleEnabled("AutoTrap")){
-                drawText("AT ON", (int)x, (int)startY + 30, on.getRGB());
-            } else{
-                drawText("AT OFF", (int)x, (int)startY + 30, off.getRGB());
-            }
-            if(ModuleManager.isModuleEnabled("HoleFill")){
-                drawText("HF ON", (int)x, (int)startY + 40, on.getRGB());
-            } else{
-                drawText("HF OFF", (int)x, (int)startY + 40, off.getRGB());
+                drawText("AutoFeetPlace OFF", (int)x, (int)startY + 20, off.getRGB());
             }
         }
     }
@@ -95,29 +82,19 @@ public class PvpinfoComponent extends Panel {
 
     private void draw(){
         if(ModuleManager.isModuleEnabled("AutoCrystal")){
-            drawText("CA ON", (int)x, (int)y, on.getRGB());
+            drawText("CrystalAura ON", (int)x, (int)y, on.getRGB());
         } else{
-            drawText("CA OFF", (int)x, (int)y, off.getRGB());
+            drawText("CrystalAura OFF", (int)x, (int)y, off.getRGB());
         }
         if(ModuleManager.isModuleEnabled("KillAura")){
-            drawText("KA ON", (int)x, (int)y + 10, on.getRGB());
+            drawText("KillAura ON", (int)x, (int)y + 10, on.getRGB());
         } else{
-            drawText("KA OFF", (int)x, (int)y + 10, off.getRGB());
+            drawText("KillAura OFF", (int)x, (int)y + 10, off.getRGB());
         }
-        if(ModuleManager.isModuleEnabled("Surround")){
-            drawText("SU ON", (int)x, (int)y + 20, on.getRGB());
+        if(ModuleManager.isModuleEnabled("AutoFeetPlace")){
+            drawText("AutoFeetPlace ON", (int)x, (int)y + 20, on.getRGB());
         } else{
-            drawText("SU OFF", (int)x, (int)y + 20, off.getRGB());
-        }
-        if(ModuleManager.isModuleEnabled("AutoTrap")){
-            drawText("AT ON", (int)x, (int)y + 30, on.getRGB());
-        } else{
-            drawText("AT OFF", (int)x, (int)y + 30, off.getRGB());
-        }
-        if(ModuleManager.isModuleEnabled("HoleFill")){
-            drawText("HF ON", (int)x, (int)y + 40, on.getRGB());
-        } else{
-            drawText("HF OFF", (int)x, (int)y + 40, off.getRGB());
+            drawText("AutoFeetPlace OFF", (int)x, (int)y + 20, off.getRGB());
         }
     }
 }

@@ -1,9 +1,10 @@
 package me.finz0.osiris.module.modules.misc;
 
+import me.finz0.osiris.module.modules.combat.AutoFeetPlace;
+import me.finz0.osiris.module.modules.combat.Surround;
 import me.finz0.osiris.settings.Setting;
 import me.finz0.osiris.OsirisMod;
 import me.finz0.osiris.module.Module;
-import me.finz0.osiris.module.modules.combat.Surround;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockObsidian;
 import net.minecraft.block.state.IBlockState;

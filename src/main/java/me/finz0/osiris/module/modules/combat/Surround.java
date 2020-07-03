@@ -25,21 +25,21 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-//kaaaaaaami
+//this wont show up ingame it will only be used for autotrap
+
 public class Surround extends Module {
     public Surround() {
-        super("Surround", Category.COMBAT, "Places obsidian at your feet");
+        super("Surround", Category.COMBAT);
     }
-    private List<Block> whiteList = Arrays.asList(Blocks.OBSIDIAN, Blocks.ENDER_CHEST);
+    private List<Block> whiteList = Arrays.asList(new Block[] {
+            Blocks.OBSIDIAN,
+            Blocks.ENDER_CHEST,
+    });
     Setting sneak;
     Setting rotate;
-    Setting bpt;
 
     public void setup(){
-        sneak = new Setting("SneakOnly", this, false, "SurroundSneakOnly");
         OsirisMod.getInstance().settingsManager.rSetting(sneak);
-        OsirisMod.getInstance().settingsManager.rSetting(rotate = new Setting("Rotate", this, true, "SurroundRotate"));
-        rSetting(bpt = new Setting("BlocksPerTick", this, 4, 1, 8, true, "SurroundBlocksPerTick"));
     }
 
     public static boolean hasNeighbour(BlockPos blockPos) {
@@ -58,8 +58,6 @@ public class Surround extends Module {
         BlockPos southBlockPos = new BlockPos(vec3d).south();
         BlockPos eastBlockPos = new BlockPos(vec3d).east();
         BlockPos westBlockPos = new BlockPos(vec3d).west();
-
-        int blocksPlaced = 0;
 
         // //check if block is already placed
         // if(!Wrapper.getWorld().getBlockState(northBlockPos).getMaterial().isReplaceable() || !Wrapper.getWorld().getBlockState(southBlockPos).getMaterial().isReplaceable() || !Wrapper.getWorld().getBlockState(eastBlockPos).getMaterial().isReplaceable() || !Wrapper.getWorld().getBlockState(westBlockPos).getMaterial().isReplaceable())
@@ -148,49 +146,17 @@ public class Surround extends Module {
 
 
         // place blocks
-        if(mc.world.getBlockState(northBlockPos).getMaterial().isReplaceable()) {
-            if(isEntitiesEmpty(northBlockPos)) {
-                placeBlockScaffold(northBlockPos, rotate.getValBoolean());
-                blocksPlaced++;
-            } else if(isEntitiesEmpty(northBlockPos.north()) && mc.world.getBlockState(northBlockPos).getMaterial().isReplaceable()){
-                placeBlockScaffold(northBlockPos.north(), rotate.getValBoolean());
-                blocksPlaced++;
-            }
-        }
-        if(blocksPlaced >= bpt.getValInt()){ mc.player.inventory.currentItem = oldSlot; return; }
+        if(mc.world.getBlockState(northBlockPos).getMaterial().isReplaceable() && isEntitiesEmpty(northBlockPos))
+            placeBlockScaffold(northBlockPos, rotate.getValBoolean());
 
-        if(mc.world.getBlockState(southBlockPos).getMaterial().isReplaceable()) {
-            if(isEntitiesEmpty(southBlockPos)) {
-                placeBlockScaffold(southBlockPos, rotate.getValBoolean());
-                blocksPlaced++;
-            } else if(isEntitiesEmpty(southBlockPos.south()) && mc.world.getBlockState(southBlockPos.south()).getMaterial().isReplaceable()){
-                placeBlockScaffold(southBlockPos.south(), rotate.getValBoolean());
-                blocksPlaced++;
-            }
-        }
-        if(blocksPlaced >= bpt.getValInt()){ mc.player.inventory.currentItem = oldSlot; return; }
+        if(mc.world.getBlockState(southBlockPos).getMaterial().isReplaceable() && isEntitiesEmpty(southBlockPos))
+            placeBlockScaffold(southBlockPos, rotate.getValBoolean());
 
-        if(mc.world.getBlockState(eastBlockPos).getMaterial().isReplaceable()) {
-            if(isEntitiesEmpty(eastBlockPos)) {
-                placeBlockScaffold(eastBlockPos, rotate.getValBoolean());
-                blocksPlaced++;
-            } else if(isEntitiesEmpty(eastBlockPos.east()) && mc.world.getBlockState(eastBlockPos.east()).getMaterial().isReplaceable()){
-                placeBlockScaffold(eastBlockPos.east(), rotate.getValBoolean());
-                blocksPlaced++;
-            }
-        }
-        if(blocksPlaced >= bpt.getValInt()){ mc.player.inventory.currentItem = oldSlot; return; }
+        if(mc.world.getBlockState(eastBlockPos).getMaterial().isReplaceable() && isEntitiesEmpty(eastBlockPos))
+            placeBlockScaffold(eastBlockPos, rotate.getValBoolean());
 
-        if(mc.world.getBlockState(westBlockPos).getMaterial().isReplaceable()) {
-            if(isEntitiesEmpty(westBlockPos)) {
-                placeBlockScaffold(westBlockPos, rotate.getValBoolean());
-                blocksPlaced++;
-            } else if(isEntitiesEmpty(westBlockPos.west()) && mc.world.getBlockState(westBlockPos.west()).getMaterial().isReplaceable()){
-                placeBlockScaffold(westBlockPos.west(), rotate.getValBoolean());
-                blocksPlaced++;
-            }
-        }
-        if(blocksPlaced >= bpt.getValInt()){ mc.player.inventory.currentItem = oldSlot; return; }
+        if(mc.world.getBlockState(westBlockPos).getMaterial().isReplaceable() && isEntitiesEmpty(westBlockPos))
+            placeBlockScaffold(westBlockPos, rotate.getValBoolean());
 
         // reset slot
         mc.player.inventory.currentItem = oldSlot;

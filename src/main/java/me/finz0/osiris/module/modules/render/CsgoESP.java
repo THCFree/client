@@ -1,10 +1,11 @@
 package me.finz0.osiris.module.modules.render;
 
+import me.finz0.osiris.module.modules.combat.AutoFeetPlace;
+import me.finz0.osiris.module.modules.combat.Surround;
 import me.finz0.osiris.settings.Setting;
 import me.finz0.osiris.OsirisMod;
 import me.finz0.osiris.event.events.RenderEvent;
 import me.finz0.osiris.module.Module;
-import me.finz0.osiris.module.modules.combat.Surround;
 import me.finz0.osiris.util.OsirisTessellator;
 import me.finz0.osiris.friends.Friends;
 import net.minecraft.client.renderer.GlStateManager;
