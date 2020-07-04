@@ -28,16 +28,15 @@ public class ModuleManager {
         addMod(new KillAura());
 		addMod(new MultiTask());
         addMod(new AutoCrystal());
-		addMod(new AutoCrystalPlus());
         addMod(new AutoFeetPlace());
         addMod(new AutoOffhand());
         addMod(new AutoTrap());
 		addMod(new AutoTotem());
         addMod(new HoleFill());
-		addMod(new HoleTP());
         addMod(new Criticals());
         addMod(new SmartOffhand());
         addMod(new BedAura());
+        addMod(new BowSpam());
         //Player
         addMod(new Blink());
         addMod(new PortalGodMode());
