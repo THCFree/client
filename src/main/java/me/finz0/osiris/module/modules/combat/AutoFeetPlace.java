@@ -52,7 +52,8 @@ public class AutoFeetPlace extends Module {
     Setting announceUsage;
     Setting autoCenter;
     Setting blocksPerTick;
-    Setting tickDelay;
+    Setting tickDelay;   
+    Setting jumpDisable;
     private int totalTicksRunning = 0;
     private int playerHotbarSlot = -1;
     private int lastHotbarSlot = -1;
@@ -81,6 +82,8 @@ public class AutoFeetPlace extends Module {
         OsirisMod.getInstance().settingsManager.rSetting(autoCenter);
         triggerable = new Setting("Triggerable", this, true, "triggerable");
         OsirisMod.getInstance().settingsManager.rSetting(triggerable);
+        jumpDisable = new Setting("JumpDisable", this, true, "SurroundJumpDisable");
+        OsirisMod.getInstance().settingsManager.rSetting(triggerable);
 
     }
 
@@ -97,7 +100,10 @@ public class AutoFeetPlace extends Module {
     /* End of Autocenter */
     @Override
     protected void onEnable() {
-
+        if(jumpDisable.getValBoolean() && !mc.player.onGround) {
+            this.disable();
+            return;
+        }
         if (mc.player == null) {
             this.disable();
             return;
@@ -174,8 +180,6 @@ public class AutoFeetPlace extends Module {
 
     @Override
     public void onUpdate() {
-
-
 
         if (triggerable.getValBoolean() && totalTicksRunning >= timeoutTicks.getValInt()) {
             totalTicksRunning = 0;
