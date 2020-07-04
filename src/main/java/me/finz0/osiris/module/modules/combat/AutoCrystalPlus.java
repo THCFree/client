@@ -46,9 +46,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 //kami skid
-public class AutoCrystal extends Module {
-    public AutoCrystal() {
-        super("AutoCrystal", Category.COMBAT);
+public class AutoCrystalPlus extends Module {
+    public AutoCrystalPlus() {
+        super("AutoCrystalPlus", Category.COMBAT);
     }
 
     private BlockPos render;
@@ -56,6 +56,7 @@ public class AutoCrystal extends Module {
     // we need this cooldown to not place from old hotbar slot, before we have switched to crystals
     private boolean switchCooldown = false;
     private boolean isAttacking = false;
+	public boolean antiSuicide = true;
     private int oldSlot = -1;
     private int newSlot;
     private int waitCounter;
@@ -325,7 +326,6 @@ public class AutoCrystal extends Module {
             isActive = false;
         }
     }
-
 
     public void onWorldRender(RenderEvent event) {
         Color color = Rainbow.getColor();

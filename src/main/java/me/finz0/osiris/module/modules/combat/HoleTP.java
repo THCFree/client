@@ -1,6 +1,8 @@
 package me.finz0.osiris.module.modules.combat;
 
 import me.finz0.osiris.module.Module;
+import me.finz0.osiris.OsirisMod;
+import me.finz0.osiris.settings.Setting;
 
 public class HoleTP extends Module {
     public HoleTP() {

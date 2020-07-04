@@ -44,7 +44,11 @@ public class SmartOffhand extends Module {
 
     public void onEnable(){
         if(mc.player != null)
-            Command.sendClientMessage("[SmartOffhand] Use at your own risk, this might fail sometimes. Pro tip: always have an empty inventory slot.");
+            Command.sendClientMessage("[SmartOffhand] ON");
+    }
+	    public void onDisable(){
+        if(mc.player != null)
+            Command.sendClientMessage("[SmartOffhand] OFF");
     }
 
     public void onUpdate() {
