@@ -26,18 +26,20 @@ public class ModuleManager {
         modules = new ArrayList<>();
         //Combat
         addMod(new KillAura());
-		addMod(new MultiTask());
+	addMod(new MultiTask());
         addMod(new AutoCrystal());
         addMod(new AutoFeetPlace());
         addMod(new AutoOffhand());
         addMod(new AutoTrap());
-		addMod(new AutoTotem());
+	addMod(new AutoTotem());
         addMod(new HoleFill());
         addMod(new Criticals());
         addMod(new SmartOffhand());
         addMod(new BedAura());
         addMod(new BowSpam());
+	addMod(new str2detect());
         //Player
+	addMod(new AutoReplanish());
         addMod(new Blink());
         addMod(new PortalGodMode());
         addMod(new FastUse());
