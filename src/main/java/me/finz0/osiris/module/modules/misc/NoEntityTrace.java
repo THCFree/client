@@ -6,7 +6,7 @@ import net.minecraft.item.ItemPickaxe;
 
 public class NoEntityTrace extends Module {
     public NoEntityTrace() {
-        super("NoEntityTrace", Category.MISC);
+        super("NoEntityTrace", Category.MISC, "Who knows");
         rSetting(pickaxeOnly = new Setting("PickaxeOnly", this, false, "NoEntityTracePickaxeOnly"));
     }
 

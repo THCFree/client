@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 
 public class SmartOffhand extends Module {
     public SmartOffhand() {
-        super("SmartOffhand", Category.COMBAT);
+        super("SmartOffhand", Category.COMBAT, "Offhand but better ig");
     }
 
     public int totems;

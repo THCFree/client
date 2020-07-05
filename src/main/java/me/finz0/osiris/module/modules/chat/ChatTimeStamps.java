@@ -15,7 +15,7 @@ import java.util.Date;
 
 public class ChatTimeStamps extends Module {
     public ChatTimeStamps() {
-        super("ChatTimeStamps", Category.CHAT);
+        super("ChatTimeStamps", Category.CHAT, "Add timestamps to chat messages");
         ArrayList<String> formats = new ArrayList<>();
         formats.add("H24:mm");
         formats.add("H12:mm");

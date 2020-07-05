@@ -7,7 +7,7 @@ import me.finz0.osiris.module.Module;
 public class Tps extends Module {
     public static Tps INSTANCE;
     public Tps() {
-        super("TPS", Category.GUI);
+        super("TPS", Category.GUI, "Damn lag machines...");
         setDrawn(false);
         INSTANCE = this;
     }

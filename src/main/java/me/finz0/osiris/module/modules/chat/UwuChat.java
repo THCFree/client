@@ -10,7 +10,7 @@ import net.minecraft.network.play.client.CPacketChatMessage;
 
 public class UwuChat extends Module  {
     public UwuChat() {
-        super("UwuChat", Category.CHAT, "uwu");
+        super("UwuChat", Category.CHAT, "UwU");
     }
 
     @EventHandler

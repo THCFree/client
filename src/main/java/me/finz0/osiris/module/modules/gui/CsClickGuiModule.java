@@ -6,7 +6,7 @@ import me.finz0.osiris.settings.Setting;
 
 public class CsClickGuiModule extends Module {
     public CsClickGuiModule() {
-        super("CsClickGUI", Category.GUI);
+        super("CsClickGUI", Category.GUI, "Arr Gee Bee");
         rSetting(new Setting("Rainbow", this, false, "CsGuiRainbow"));
         rSetting(new Setting("Red", this, 200, 0, 255, true, "CsGuiRed"));
         rSetting(new Setting("Green", this, 50, 0, 255, true, "CsGuiGreen"));

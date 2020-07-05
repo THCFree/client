@@ -11,7 +11,7 @@ import net.minecraft.network.play.client.CPacketPlayer;
 
 public class Freecam extends Module {
     public Freecam() {
-        super("Freecam", Category.PLAYER);
+        super("Freecam", Category.PLAYER, "Set your player view to anywhere, doesn't actually move the player");
         rSetting(speed = new Setting("Speed", this, 1, 0.1, 10, false, "FreecamSpeed"));
     }
 

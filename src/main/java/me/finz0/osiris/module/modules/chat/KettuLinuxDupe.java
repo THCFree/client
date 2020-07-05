@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class KettuLinuxDupe extends Module {
     public KettuLinuxDupe() {
-        super("KettuLinuxDupe", Category.CHAT);
+        super("KettuLinuxDupe", Category.CHAT, "Based dupe module");
     }
 
     public void onEnable(){

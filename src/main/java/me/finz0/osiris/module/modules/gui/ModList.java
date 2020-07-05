@@ -12,7 +12,7 @@ import java.util.Comparator;
 
 public class ModList extends Module {
     public ModList() {
-        super("ModList", Category.GUI);
+        super("ModList", Category.GUI, "Shows toggled modules on screen");
         setDrawn(false);
     }
 

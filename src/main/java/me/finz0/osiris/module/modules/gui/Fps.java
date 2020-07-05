@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class Fps extends Module {
     public Fps() {
-        super("FPS", Category.GUI);
+        super("FPS", Category.GUI, "It's Minecraft, there's no way you're dropping frames");
         setDrawn(false);
     }
     public Setting rainbow;

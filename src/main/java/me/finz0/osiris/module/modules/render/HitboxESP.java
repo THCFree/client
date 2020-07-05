@@ -14,7 +14,7 @@ import java.awt.*;
 
 public class HitboxESP extends Module {
     public HitboxESP() {
-        super("HitboxESP", Category.RENDER);
+        super("HitboxESP", Category.RENDER, "Displays hitbox of entities");
         OsirisMod.getInstance().settingsManager.rSetting(players = new Setting("Players", this, false, "HitBoxEspPlayers"));
         OsirisMod.getInstance().settingsManager.rSetting(passive = new Setting("Passive", this, false, "HitBoxEspPassive"));
         OsirisMod.getInstance().settingsManager.rSetting(mobs = new Setting("Mobs", this, false, "HitBoxEspMobs"));

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class Totems extends Module {
     public Totems() {
-        super("Totems", Category.GUI);
+        super("Totems", Category.GUI, "Shows totem count");
         setDrawn(false);
     }
 

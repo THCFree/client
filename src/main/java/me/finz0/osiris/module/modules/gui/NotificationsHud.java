@@ -10,7 +10,7 @@ import java.util.List;
 
 public class NotificationsHud extends Module {
     public NotificationsHud() {
-        super("HudNotifications", Category.GUI);
+        super("HudNotifications", Category.GUI, "Don't");
     }
 
     int count;

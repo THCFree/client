@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class Crystals extends Module {
     public Crystals() {
-        super("Crystals", Category.GUI);
+        super("Crystals", Category.GUI, "Counts how many crystals you have");
         setDrawn(false);
     }
 

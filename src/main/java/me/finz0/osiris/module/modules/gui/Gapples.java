@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class Gapples extends Module {
     public Gapples() {
-        super("Gapples", Category.GUI);
+        super("Gapples", Category.GUI, "Shows how many gapples you have");
         setDrawn(false);
     }
 
