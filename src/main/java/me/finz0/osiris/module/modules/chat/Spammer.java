@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Spammer extends Module {
     public Spammer() {
-        super("Spammer", Category.CHAT);
+        super("Spammer", Category.CHAT, "Spams chat with a given message");
         text = new ArrayList<>();
     }
 

@@ -7,7 +7,7 @@ import me.finz0.osiris.module.Module;
 public class Watermark extends Module {
     public static Watermark INSTANCE;
     public Watermark() {
-        super("Watermark", Category.GUI);
+        super("Watermark", Category.GUI, "Made with mematic");
         setDrawn(false);
         INSTANCE = this;
     }

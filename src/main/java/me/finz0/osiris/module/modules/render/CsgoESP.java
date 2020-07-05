@@ -20,7 +20,7 @@ import static org.lwjgl.opengl.GL11.*;
 
 public class CsgoESP extends Module {
     public CsgoESP() {
-        super("CsgoESP", Category.RENDER);
+        super("CsgoESP", Category.RENDER, "ESP CS:GO style");
     }
 
     Setting players;

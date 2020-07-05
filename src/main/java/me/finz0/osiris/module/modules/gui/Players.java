@@ -12,7 +12,7 @@ import java.text.DecimalFormat;
 
 public class Players extends Module {
     public Players() {
-        super("Players", Category.GUI);
+        super("Players", Category.GUI, "Info about players near you");
         setDrawn(false);
     }
 

@@ -9,7 +9,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class DotGodSpammer extends Module {
     public DotGodSpammer() {
-        super("DotGodSpammer", Category.CHAT);
+        super("DotGodSpammer", Category.CHAT, "Spams helpful messages in chat");
     }
     int waitCounter;
     Setting delay;

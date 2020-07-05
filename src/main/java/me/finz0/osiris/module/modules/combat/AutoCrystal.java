@@ -48,7 +48,7 @@ import java.util.stream.Collectors;
 //kami skid
 public class AutoCrystal extends Module {
     public AutoCrystal() {
-        super("AutoCrystal", Category.COMBAT);
+        super("AutoCrystal", Category.COMBAT, "Best in the business");
     }
 
     private BlockPos render;

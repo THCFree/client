@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Direction extends Module {
     public Direction() {
-        super("Direction", Category.GUI);
+        super("Direction", Category.GUI, "Shows your direction");
         ArrayList<String> modes = new ArrayList<>();
         modes.add("XZ");
         modes.add("NSWE");

@@ -11,7 +11,7 @@ import java.text.DecimalFormat;
 
 public class PotionEffects extends Module {
     public PotionEffects() {
-        super("PotionEffects", Category.GUI);
+        super("PotionEffects", Category.GUI, "Current potion effects");
         setDrawn(false);
     }
 

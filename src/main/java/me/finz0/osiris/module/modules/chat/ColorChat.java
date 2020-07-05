@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class ColorChat extends Module {
     public ColorChat() {
-        super("ColorChat", Category.CHAT);
+        super("ColorChat", Category.CHAT, "Make your chat messages fancy colors");
     }
 
     Setting mode;

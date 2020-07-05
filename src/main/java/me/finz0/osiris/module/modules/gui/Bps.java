@@ -6,7 +6,7 @@ import me.finz0.osiris.module.Module;
 
 public class Bps extends Module {
     public Bps() {
-        super("BPS", Category.GUI);
+        super("BPS", Category.GUI, "Measures your blocks-per-second");
         setDrawn(false);
     }
 
@@ -23,7 +23,7 @@ public class Bps extends Module {
         OsirisMod.getInstance().settingsManager.rSetting(red);
         OsirisMod.getInstance().settingsManager.rSetting(green);
         OsirisMod.getInstance().settingsManager.rSetting(blue);
-        rainbow = new Setting("Rainbow", this, false, "BlocksPerSecondRaiknbow");
+        rainbow = new Setting("Rainbow", this, false, "BlocksPerSecondRainbow");
         OsirisMod.getInstance().settingsManager.rSetting(rainbow);
         OsirisMod.getInstance().settingsManager.rSetting(customFont = new Setting("CFont", this, false, "BlocksPerSecondCustomFont"));
     }
