@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class TabGui extends Module {
     public TabGui() {
-        super("TabGUI", Category.RENDER);
+        super("TabGUI", Category.RENDER, "Select modules without even opening the GUI!");
         setDrawn(false);
     }
 

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Coords extends Module {
     public Coords() {
-        super("Coordinates", Category.GUI);
+        super("Coordinates", Category.GUI, "Leaks your coords to your screen");
         setDrawn(false);
     }
 

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class CurrentHole extends Module {
     public CurrentHole() {
-        super("Hole", Category.GUI);
+        super("Hole", Category.GUI, "Info about the hole you're in");
         ArrayList<String> modes = new ArrayList<>();
         modes.add("Texture");
         modes.add("Block");

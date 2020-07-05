@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class Exp extends Module {
     public Exp() {
-        super("Exp", Category.GUI);
+        super("Exp", Category.GUI, "Shows how many exp bottles you have");
         setDrawn(false);
     }
 

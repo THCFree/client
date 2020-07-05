@@ -6,7 +6,7 @@ import me.finz0.osiris.module.Module;
 
 public class Time extends Module {
     public Time() {
-        super("Time", Category.GUI);
+        super("Time", Category.GUI, "When did it get dark?");
         setDrawn(false);
     }
 

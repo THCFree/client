@@ -13,7 +13,7 @@ import net.minecraftforge.client.event.ClientChatReceivedEvent;
 
 public class BetterChat extends Module {
     public BetterChat() {
-        super("BetterChat", Category.CHAT);
+        super("BetterChat", Category.CHAT, "Improves chat");
     }
 
     public Setting clearBkg;

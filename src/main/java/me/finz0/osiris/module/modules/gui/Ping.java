@@ -6,7 +6,7 @@ import me.finz0.osiris.module.Module;
 
 public class Ping extends Module {
     public Ping() {
-        super("Ping", Category.GUI);
+        super("Ping", Category.GUI, "@everyone (it just shows your server ping)");
         setDrawn(false);
     }
 

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 //also kami skid
 public class AutoOffhand extends Module {
     public AutoOffhand() {
-        super("AutoOffHand", Category.COMBAT);
+        super("AutoOffHand", Category.COMBAT, "Keeps an item in your offhand");
     }
     public int totems;
     public int crystals;

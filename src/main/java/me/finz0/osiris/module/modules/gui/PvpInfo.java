@@ -6,7 +6,7 @@ import me.finz0.osiris.module.Module;
 
 public class PvpInfo extends Module {
     public PvpInfo() {
-        super("PvpInfo", Category.GUI);
+        super("PvpInfo", Category.GUI, "Helpful stuff");
         setDrawn(false);
     }
 

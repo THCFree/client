@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class WelcomerGui extends Module {
     public WelcomerGui() {
-        super("Welcome", Category.GUI);
+        super("Welcome", Category.GUI, "idk");
         setDrawn(false);
     }
 

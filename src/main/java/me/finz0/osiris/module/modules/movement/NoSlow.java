@@ -8,7 +8,7 @@ import net.minecraftforge.client.event.InputUpdateEvent;
 
 public class NoSlow extends Module {
     public NoSlow() {
-        super("NoSlow", Category.MOVEMENT, "Prevents item use form slowing you down");
+        super("NoSlow", Category.MOVEMENT, "Prevents item use from slowing you down");
     }
 
     @EventHandler
