@@ -10,8 +10,6 @@ public class HoleTP extends Module {
     }
 	
     public void onUpdate() {
-	if (mc.player.inWater || mc.player.isInLava())
-		return;
         if (mc.player.onGround) //TODO: make a slider so user can customise distance.
             --mc.player.motionY;
     }
