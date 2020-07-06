@@ -521,6 +521,7 @@ public class AutoCrystal extends Module {
     public void onEnable() {
         OsirisMod.EVENT_BUS.subscribe(this);
         isActive = false;
+        Command.sendClientMessage("[AutoCrystal] " + ChatFormatting.GREEN.toString() + "ON");
     }
 
     @Override
@@ -530,5 +531,6 @@ public class AutoCrystal extends Module {
         renderEnt = null;
         resetRotation();
         isActive = false;
+        Command.sendClientMessage("[AutoCrystal] " + ChatFormatting.RED.toString() + "OFF");
     }
 }

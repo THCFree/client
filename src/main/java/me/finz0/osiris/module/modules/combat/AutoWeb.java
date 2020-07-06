@@ -44,9 +44,9 @@ public class AutoWeb extends Module {
 
     public void setup(){
         OsirisMod.getInstance().settingsManager.rSetting(rotate = new Setting("Rotate", this, true, "AutoWebRotate"));
-        OsirisMod.getInstance().settingsManager.rSetting(debugMessages = new Setting("DebugMessages", this, true, "AutoWebdebugMessages"));
+        OsirisMod.getInstance().settingsManager.rSetting(debugMessages = new Setting("DebugMessages", this, false, "AutoWebdebugMessages"));
         OsirisMod.getInstance().settingsManager.rSetting(spoofRotations = new Setting("SpoofRotations", this, true, "AutoWebSpoofRotations"));
-        OsirisMod.getInstance().settingsManager.rSetting(spoofHotbar = new Setting("SpoofHotbar", this, true, "AutoWebSpoofHotbar"));
+        OsirisMod.getInstance().settingsManager.rSetting(spoofHotbar = new Setting("SpoofHotbar", this, false, "AutoWebSpoofHotbar"));
 
         OsirisMod.getInstance().settingsManager.rSetting(range = new Setting("Range", this, 5, 0, 10, false, "AutoWebRange"));
         OsirisMod.getInstance().settingsManager.rSetting(bpt = new Setting("BlocksPerTick", this, 8, 1, 15, true, "AutoWebBPT"));
@@ -227,10 +227,8 @@ public class AutoWeb extends Module {
     protected void onEnable() {
         if (mc.player == null) {
             disable();
+            Command.sendClientMessage("[WebAura] " + ChatFormatting.GREEN.toString() + "ON");
             return;
-        }
-        if (((Boolean)this.debugMessages.getValBoolean())) {
-            Command.sendClientMessage("[WebAura] Enabling");
         }
         this.playerHotbarSlot = (Wrapper.getPlayer()).inventory.currentItem;
         this.lastHotbarSlot = -1;
@@ -243,10 +241,8 @@ public class AutoWeb extends Module {
 
     protected void onDisable() {
         if (mc.player == null) {
+            Command.sendClientMessage("[WebAura] " + ChatFormatting.RED.toString() + "OFF");
             return;
-        }
-        if (((Boolean)this.debugMessages.getValBoolean())) {
-            Command.sendClientMessage("[WebAura] Disabling");
         }
         if (this.lastHotbarSlot != this.playerHotbarSlot && this.playerHotbarSlot != -1) {
             if (((Boolean)this.debugMessages.getValBoolean())) {
