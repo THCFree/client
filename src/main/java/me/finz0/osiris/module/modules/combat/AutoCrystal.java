@@ -1,5 +1,6 @@
 package me.finz0.osiris.module.modules.combat;
 
+import com.mojang.realmsclient.gui.ChatFormatting;
 import me.finz0.osiris.settings.Setting;
 import me.finz0.osiris.OsirisMod;
 import me.finz0.osiris.command.Command;
@@ -521,6 +522,7 @@ public class AutoCrystal extends Module {
     public void onEnable() {
         OsirisMod.EVENT_BUS.subscribe(this);
         isActive = false;
+        Command.sendClientMessage("[AutoCrystal] " + ChatFormatting.GREEN.toString() + "ON");
     }
 
     @Override
@@ -530,5 +532,6 @@ public class AutoCrystal extends Module {
         renderEnt = null;
         resetRotation();
         isActive = false;
+        Command.sendClientMessage("[AutoCrystal] " + ChatFormatting.RED.toString() + "OFF");
     }
 }

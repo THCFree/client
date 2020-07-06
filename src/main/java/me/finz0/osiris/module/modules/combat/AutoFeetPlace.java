@@ -83,7 +83,7 @@ public class AutoFeetPlace extends Module {
         triggerable = new Setting("Triggerable", this, true, "triggerable");
         OsirisMod.getInstance().settingsManager.rSetting(triggerable);
         jumpDisable = new Setting("JumpDisable", this, true, "SurroundJumpDisable");
-        OsirisMod.getInstance().settingsManager.rSetting(triggerable);
+        OsirisMod.getInstance().settingsManager.rSetting(jumpDisable);
 
     }
 
