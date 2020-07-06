@@ -1,5 +1,6 @@
 package me.finz0.osiris.module.modules.combat;
 
+import com.mojang.realmsclient.gui.ChatFormatting;
 import me.finz0.osiris.settings.Setting;
 import me.finz0.osiris.OsirisMod;
 import me.finz0.osiris.command.Command;
