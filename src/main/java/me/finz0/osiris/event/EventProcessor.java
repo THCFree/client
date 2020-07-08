@@ -274,6 +274,40 @@ public class EventProcessor {
     public void onWorldLoad(WorldEvent.Load event) {
         OsirisMod.EVENT_BUS.post(event);
     }
+
+    @EventHandler
+    private Listener<PacketEvent.Receive> receiveListener = new Listener<>(event -> {
+        if (event.getPacket() instanceof SPacketPlayerListItem) {
+                SPacketPlayerListItem packet = (SPacketPlayerListItem) event.getPacket();
+                if (packet.getAction() == SPacketPlayerListItem.Action.ADD_PLAYER) {
+                    for (SPacketPlayerListItem.AddPlayerData playerData : packet.getEntries()) {
+                        if (playerData.getProfile().getId() != mc.session.getProfile().getId()) {
+                            new Thread(() -> {
+                                String name = resolveName(playerData.getProfile().getId().toString());
+                                if (name != null) {
+                                    if (mc.player != null && mc.player.ticksExisted >= 1000)
+                                        OsirisMod.EVENT_BUS.post(new PlayerJoinEvent(name));
+                                }
+                            }).start();
+                        }
+                    }
+                }
+                if (packet.getAction() == SPacketPlayerListItem.Action.REMOVE_PLAYER) {
+                    for (SPacketPlayerListItem.AddPlayerData playerData : packet.getEntries()) {
+                        if (playerData.getProfile().getId() != mc.session.getProfile().getId()) {
+                            new Thread(() -> {
+                                final String name = resolveName(playerData.getProfile().getId().toString());
+                                if (name != null) {
+                                    if (mc.player != null && mc.player.ticksExisted >= 1000)
+                                        OsirisMod.EVENT_BUS.post(new PlayerLeaveEvent(name));
+                                }
+                            }).start();
+                        }
+                    }
+                }
+        }
+    });
+
     private final Map<String, String> uuidNameCache = Maps.newConcurrentMap();
 
     public String resolveName(String uuid) {

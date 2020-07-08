@@ -8,9 +8,8 @@ public class HoleTP extends Module {
     public HoleTP() {
         super("HoleTP", Category.COMBAT, "Gets you into holes faster");
     }
-	
     public void onUpdate() {
-        if (mc.player.onGround)
+        if (mc.player.onGround) //TODO: make a slider so user can customise distance.
             --mc.player.motionY;
     }
 }
