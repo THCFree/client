@@ -48,7 +48,7 @@ import java.util.stream.Collectors;
 //kami skid
 public class AutoCrystalPlus extends Module {
     public AutoCrystalPlus() {
-        super("AutoCrystalPlus", Category.COMBAT, "Even better than the best");
+        super("AutoCrystalPlus", Category.COMBAT);
     }
 
     private BlockPos render;
@@ -56,25 +56,29 @@ public class AutoCrystalPlus extends Module {
     // we need this cooldown to not place from old hotbar slot, before we have switched to crystals
     private boolean switchCooldown = false;
     private boolean isAttacking = false;
-	public boolean antiSuicide = true;
     private int oldSlot = -1;
     private int newSlot;
     private int waitCounter;
+	private int antiStuckTicks = 0;
+	private int placeSpeedTicks = 0;
     EnumFacing f;
 
-    Setting explode;
+  //  Setting explode; fucking pointless why would you want this shit
     Setting waitTick;
+	Setting placeSpeed;
     Setting range;
     Setting walls;
     Setting antiWeakness;
     Setting nodesync;
     Setting place;
+	Setting enemyDistance;
     Setting autoSwitch;
     Setting placeRange;
     Setting minDmg;
     Setting facePlace;
-    Setting raytrace;
+  //  Setting raytrace; also should be on  by default idk why there is an option
     Setting rotate;
+	Setting antiStuck;
     Setting spoofRotations;
     Setting chat;
     Setting rainbow;
@@ -90,49 +94,54 @@ public class AutoCrystalPlus extends Module {
 
 
     public void setup() {
-        explode = new Setting("Hit", this, true, "AutoCrystalHit");
-        OsirisMod.getInstance().settingsManager.rSetting(explode);
-        waitTick = new Setting("TickDelay", this, 1, 0, 20.0, true, "AutoCrystalTickDelay");
+       // explode = new Setting("Hit", this, true, "AutoCrystalHit");
+       // OsirisMod.getInstance().settingsManager.rSetting(explode);
+        waitTick = new Setting("TickDelay", this, 1, 0, 20.0, true, "AutoCrystalPlusTickDelay");
         OsirisMod.getInstance().settingsManager.rSetting(waitTick);
-        range = new Setting("HitRange", this, 5.0, 0.0, 10.0, false, "AutoCrystalHitRange");
+		placeSpeed = new Setting("PlaceSpeed", this, 1, 0, 20.0, true, "AutoCrystalPlusPlaceSpeed");
+        OsirisMod.getInstance().settingsManager.rSetting(placeSpeed);
+        range = new Setting("HitRange", this, 5.0, 0.0, 10.0, false, "AutoCrystalPlusHitRange");
         OsirisMod.getInstance().settingsManager.rSetting(range);
-        walls = new Setting("WallsRange", this, 3.5, 0.0, 10.0, false, "AutoCrystalWallsRange");
+        walls = new Setting("WallsRange", this, 3.5, 0.0, 10.0, false, "AutoCrystalPlusWallsRange");
         OsirisMod.getInstance().settingsManager.rSetting(walls);
-        antiWeakness = new Setting("AntiWeakness", this, true, "AutoCrystalAntiWeakness");
+        antiWeakness = new Setting("AntiWeakness", this, true, "AutoCrystalPlusAntiWeakness");
         OsirisMod.getInstance().settingsManager.rSetting(antiWeakness);
-        nodesync = new Setting("AntiDesync", this, true, "AutoCrystalAntiDesync");
+        nodesync = new Setting("AntiDesync", this, true, "AutoCrystalPlusAntiDesync");
         OsirisMod.getInstance().settingsManager.rSetting(nodesync);
 
-        place = new Setting("Place", this, true, "AutoCrystalPlace");
+        place = new Setting("Place", this, true, "AutoCrystalPlusPlace");
         OsirisMod.getInstance().settingsManager.rSetting(place);
-        autoSwitch = new Setting("AutoSwitch", this, true, "AutoCrystalAutoSwitch");
+        autoSwitch = new Setting("AutoSwitch", this, true, "AutoCrystalPlusAutoSwitch");
         OsirisMod.getInstance().settingsManager.rSetting(autoSwitch);
-        OsirisMod.getInstance().settingsManager.rSetting(noGappleSwitch = new Setting("NoGapSwitch", this, false, "AutoCrystalNoGapSwitch"));
-        placeRange = new Setting("PlaceRange", this, 5.0, 0.0, 10.0, false, "AutoCrystalPlaceRange");
+		antiStuck = new Setting("AntiStuck", this, true, "AutoCrystalPlusAntiStuck");
+        OsirisMod.getInstance().settingsManager.rSetting(antiStuck);
+        OsirisMod.getInstance().settingsManager.rSetting(noGappleSwitch = new Setting("NoGapSwitch", this, false, "AutoCrystalPlusNoGapSwitch"));
+        placeRange = new Setting("PlaceRange", this, 5.0, 0.0, 10.0, false, "AutoCrystalPlusPlaceRange");
         OsirisMod.getInstance().settingsManager.rSetting(placeRange);
-        minDmg = new Setting("MinDamage", this, 5.0, 0.0, 40.0, false, "AutoCrystalMinDamage");
+        minDmg = new Setting("MinDamage", this, 5.0, 0.0, 40.0, false, "AutoCrystalPlusMinDamage");
         OsirisMod.getInstance().settingsManager.rSetting(minDmg);
-        facePlace = new Setting("FaceplaceHP", this, 6.0, 0.0, 40.0, false, "AutoCrystalFaceplaceHP");
-        OsirisMod.getInstance().settingsManager.rSetting(facePlace);
-        raytrace = new Setting("Raytrace", this, false, "AutoCrystalRaytrace");
-        OsirisMod.getInstance().settingsManager.rSetting(raytrace);
-        rotate = new Setting("Rotate", this, true, "AutoCrystalRotate");
+        facePlace = new Setting("FaceplaceHP", this, 6.0, 0.0, 40.0, false, "AutoCrystalPlusFaceplaceHP");
+		enemyDistance = new Setting("EnemyDistance", this, 13.0, 1.0, 50.0, false, "AutoCrystalPlusEnemyDistance");
+		OsirisMod.getInstance().settingsManager.rSetting(enemyDistance);
+      // raytrace = new Setting("Raytrace", this, false, "AutoCrystalPlusRaytrace");
+      // OsirisMod.getInstance().settingsManager.rSetting(raytrace);
+        rotate = new Setting("Rotate", this, true, "AutoCrystalPlusRotate");
         OsirisMod.getInstance().settingsManager.rSetting(rotate);
-        spoofRotations = new Setting("SpoofAngles", this, true, "AutoCrystalSpoofAngles");
+        spoofRotations = new Setting("SpoofAngles", this, true, "AutoCrystalPlusSpoofAngles");
         OsirisMod.getInstance().settingsManager.rSetting(spoofRotations);
-        OsirisMod.getInstance().settingsManager.rSetting(maxSelfDmg = new Setting("MaxSelfDmg", this, 10, 0, 36, false, "AutoCrystalMaxSelfDamage"));
+        OsirisMod.getInstance().settingsManager.rSetting(maxSelfDmg = new Setting("MaxSelfDmg", this, 10, 0, 36, false, "AutoCrystalPlusMaxSelfDamage"));
         chat = new Setting("ToggleMsgs", this, true, "AutoCrystalToggleMessages");
         OsirisMod.getInstance().settingsManager.rSetting(chat);
 
-        rainbow = new Setting("EspRainbow", this, false, "AutoCrystalEspRainbow");
+        rainbow = new Setting("EspRainbow", this, false, "AutoCrystalPlusEspRainbow");
         OsirisMod.getInstance().settingsManager.rSetting(rainbow);
-        espR = new Setting("EspRed", this, 200, 0, 255, true, "AutoCrystalEspRed");
+        espR = new Setting("EspRed", this, 200, 0, 255, true, "AutoCrystalPlusEspRed");
         OsirisMod.getInstance().settingsManager.rSetting(espR);
-        espG = new Setting("EspGreen", this, 50, 0, 255, true, "AutoCrystalEspGreen");
+        espG = new Setting("EspGreen", this, 50, 0, 255, true, "AutoCrystalPlusEspGreen");
         OsirisMod.getInstance().settingsManager.rSetting(espG);
-        espB = new Setting("EspBlue", this, 200, 0, 255, true, "AutoCrystalEspBlue");
+        espB = new Setting("EspBlue", this, 200, 0, 255, true, "AutoCrystalPlusEspBlue");
         OsirisMod.getInstance().settingsManager.rSetting(espB);
-        espA = new Setting("EspAlpha", this, 50, 0, 255, true, "AutoCrystalEspAlpha");
+        espA = new Setting("EspAlpha", this, 50, 0, 255, true, "AutoCrystalPlusEspAlpha");
         OsirisMod.getInstance().settingsManager.rSetting(espA);
 
         ArrayList<String> renderModes = new ArrayList<>();
@@ -140,13 +149,14 @@ public class AutoCrystalPlus extends Module {
         renderModes.add("HalfBox");
         renderModes.add("Plane");
 
-        renderMode = new Setting("EspRenderMode", this, "Box", renderModes, "AutoCrystalEspRenderMode");
+        renderMode = new Setting("EspRenderMode", this, "Box", renderModes, "AutoCrystalPluslEspRenderMode");
         OsirisMod.getInstance().settingsManager.rSetting(renderMode);
 
     }
 
     public void onUpdate() {
         isActive = false;
+		placeSpeedTicks++;
         if(mc.player == null || mc.player.isDead) return; // bruh
         EntityEnderCrystal crystal = mc.world.loadedEntityList.stream()
                 .filter(entity -> entity instanceof EntityEnderCrystal)
@@ -154,7 +164,8 @@ public class AutoCrystalPlus extends Module {
                 .map(entity -> (EntityEnderCrystal) entity)
                 .min(Comparator.comparing(c -> mc.player.getDistance(c)))
                 .orElse(null);
-        if (explode.getValBoolean() && crystal != null) {
+        if ( /* explode.getValBoolean() && */ crystal != null) {
+			antiStuckTicks++;
             if (!mc.player.canEntityBeSeen(crystal) && mc.player.getDistance(crystal) > walls.getValDouble()) return;
 
             if (waitTick.getValDouble() > 0) {
@@ -202,7 +213,27 @@ public class AutoCrystalPlus extends Module {
                 mc.playerController.attackEntity(mc.player, crystal);
                 mc.player.swingArm(EnumHand.MAIN_HAND);
             isActive = false;
-            return;
+			if(antiStuck.getValBoolean()) {
+				if(antiStuckTicks < 40) { // number of ticks you have to be stuck for until AntiStuck starts placing more crystals
+					if(placeSpeedTicks >= placeSpeed.getValDouble() && placeSpeed.getValDouble() != 20 && placeSpeed.getValDouble() != 1) { // this waits until the delay is over to multiplace, also makes it where if placespeed is 20, there is no multiplace delay, and if its 1, there is no multiplace at all
+						placeSpeedTicks = 0;
+						return;
+					}
+					if(placeSpeed.getValDouble() == 1) { // makes it always return if its 1 so there is no multiplace
+						return;
+					}
+				} else {
+					antiStuckTicks = 0;
+				}
+			} else {
+					if(placeSpeedTicks <= 1000 - placeSpeed.getValDouble() * 5 && placeSpeed.getValDouble() != 20 && placeSpeed.getValDouble() != 1) { // this waits until the delay is over to multiplace, also makes it where if placespeed is 20, there is no multiplace delay, and if its 1, there is no multiplace at all
+						placeSpeedTicks = 0;
+						return;
+					}
+					if(placeSpeed.getValDouble() == 1) { // makes it always return if its 1 so there is no multiplace
+						return;
+					}
+			}
         } else {
             resetRotation();
             if (oldSlot != -1) {
@@ -211,6 +242,7 @@ public class AutoCrystalPlus extends Module {
             }
             isAttacking = false;
             isActive = false;
+			antiStuckTicks = 0;
         }
 
         int crystalSlot = mc.player.getHeldItemMainhand().getItem() == Items.END_CRYSTAL ? mc.player.inventory.currentItem : -1;
@@ -241,8 +273,11 @@ public class AutoCrystalPlus extends Module {
                 continue;
             }
             for (BlockPos blockPos : blocks) {
+				if(!canSeeBlock(blockPos) && mc.player.getDistanceSq(blockPos) > Math.pow(walls.getValDouble(), 2)) {
+					continue;
+				}
                 double b = entity.getDistanceSq(blockPos);
-                if (b >= 169) {
+                if (b >= Math.pow(enemyDistance.getValDouble(), 2)) {
                     continue; // If this block if further than 13 (3.6^2, less calc) blocks, ignore it. It'll take no or very little damage
                 }
                 double d = calculateDamage(blockPos.getX() + .5, blockPos.getY() + 1, blockPos.getZ() + .5, entity);
@@ -279,7 +314,7 @@ public class AutoCrystalPlus extends Module {
                 lookAtPacket(q.getX() + .5, q.getY() - .5, q.getZ() + .5, mc.player);
             }
             RayTraceResult result = mc.world.rayTraceBlocks(new Vec3d(mc.player.posX, mc.player.posY + mc.player.getEyeHeight(), mc.player.posZ), new Vec3d(q.getX() + .5, q.getY() - .5d, q.getZ() + .5));
-            if(raytrace.getValBoolean()) {
+        //    if(raytrace.getValBoolean()) {
                 if(result == null || result.sideHit == null) {
                     q = null;
                     f = null;
@@ -290,7 +325,7 @@ public class AutoCrystalPlus extends Module {
                 } else {
                     f = result.sideHit;
                 }
-            }
+          //  }
 
             if (!offhand && mc.player.inventory.currentItem != crystalSlot) {
                 if (autoSwitch.getValBoolean()) {
@@ -315,17 +350,18 @@ public class AutoCrystalPlus extends Module {
             //mc.playerController.processRightClickBlock(mc.player, mc.world, q, f, new Vec3d(0, 0, 0), EnumHand.MAIN_HAND);
             if(q != null && mc.player != null) {
                 isActive = true;
-                if (raytrace.getValBoolean() && f != null) {
+      //          if (raytrace.getValBoolean() && f != null) {
                     mc.player.connection.sendPacket(new CPacketPlayerTryUseItemOnBlock(q, f, offhand ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND, 0, 0, 0));
-                } else {
+                /*  } else {
                     mc.player.connection.sendPacket(new CPacketPlayerTryUseItemOnBlock(q, EnumFacing.UP, offhand ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND, 0, 0, 0));
-                }
+                } */
                 if(ModuleManager.isModuleEnabled("AutoGG"))
                     AutoGG.INSTANCE.addTargetedPlayer(renderEnt.getName());
             }
             isActive = false;
         }
     }
+
 
     public void onWorldRender(RenderEvent event) {
         Color color = Rainbow.getColor();
@@ -358,6 +394,10 @@ public class AutoCrystalPlus extends Module {
     private void lookAtPacket(double px, double py, double pz, EntityPlayer me) {
         double[] v = calculateLookAt(px, py, pz, me);
         setYawAndPitch((float) v[0], (float) v[1]);
+    }
+	
+	public static boolean canSeeBlock(BlockPos pos)  {
+        return mc.world.rayTraceBlocks(new Vec3d(mc.player.posX, mc.player.posY + (double)mc.player.getEyeHeight(), mc.player.posZ), new Vec3d(pos.getX(), pos.getY(), pos.getZ()), false, true, false) == null;
     }
 
     private boolean canPlaceCrystal(BlockPos blockPos) {

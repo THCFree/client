@@ -28,6 +28,7 @@ public class ModuleManager {
         addMod(new KillAura());
 		addMod(new MultiTask());
         addMod(new AutoCrystal());
+		addMod(new AutoCrystalPlus());
         addMod(new AutoFeetPlace());
         addMod(new AutoOffhand());
         addMod(new AutoTrap());
