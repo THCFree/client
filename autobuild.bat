@@ -1,2 +1,1 @@
-color 0a
-gradlew build
+start gradlew.bat build
