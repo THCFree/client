@@ -41,7 +41,6 @@ public class ModuleManager {
         addMod(new BowSpam());
 		addMod(new str2detect());
 		addMod(new AutoWeb());
-        addMod(new AutoArmor());
         //Player
 		addMod(new AutoReplanish());
         addMod(new Blink());
