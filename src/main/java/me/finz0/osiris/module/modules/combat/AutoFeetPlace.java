@@ -100,10 +100,6 @@ public class AutoFeetPlace extends Module {
     /* End of Autocenter */
     @Override
     protected void onEnable() {
-        if(jumpDisable.getValBoolean() && !mc.player.onGround) {
-            this.disable();
-            return;
-        }
         if (mc.player == null) {
             this.disable();
             return;
@@ -183,6 +179,11 @@ public class AutoFeetPlace extends Module {
 
         if (triggerable.getValBoolean() && totalTicksRunning >= timeoutTicks.getValInt()) {
             totalTicksRunning = 0;
+            this.disable();
+            return;
+        }
+
+        if(jumpDisable.getValBoolean() && !mc.player.onGround) {
             this.disable();
             return;
         }
