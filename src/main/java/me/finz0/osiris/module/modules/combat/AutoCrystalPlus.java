@@ -401,7 +401,7 @@ public class AutoCrystalPlus extends Module {
         return mc.world.rayTraceBlocks(new Vec3d(mc.player.posX, mc.player.posY + (double)mc.player.getEyeHeight(), mc.player.posZ), new Vec3d(pos.getX(), pos.getY(), pos.getZ()), false, true, false) == null;
     }
 
-    private boolean canPlaceCrystal(BlockPos blockPos) {
+    public boolean canPlaceCrystal(BlockPos blockPos) {
         BlockPos boost = blockPos.add(0, 1, 0);
         BlockPos boost2 = blockPos.add(0, 2, 0);
         return (mc.world.getBlockState(blockPos).getBlock() == Blocks.BEDROCK

@@ -13,6 +13,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
+import net.minecraftforge.common.util.FakePlayer;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
@@ -71,6 +72,7 @@ public class ModuleManager {
         addMod(new ClinetTimer());
         addMod(new TotemPopCounter());
         addMod(new BreakTweaks());
+        addMod(new fakeplayer());
         //Chat
         addMod(new VisualRange());
         addMod(new BetterChat());
@@ -103,6 +105,7 @@ public class ModuleManager {
         addMod(new BoxESP());
         addMod(new TabGui());
         addMod(new ShulkerPreview());
+        addMod(new CityESP());
         //GUI
         addMod(new ModList());
         addMod(new ClickGuiModule());
