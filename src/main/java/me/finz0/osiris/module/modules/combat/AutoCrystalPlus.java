@@ -59,8 +59,8 @@ public class AutoCrystalPlus extends Module {
     private int oldSlot = -1;
     private int newSlot;
     private int waitCounter;
-	private int antiStuckTicks = 0;
-	private int placeSpeedTicks = 0;
+    private int antiStuckTicks = 0;
+    private int placeSpeedTicks = 0;
     EnumFacing f;
 
   //  Setting explode; fucking pointless why would you want this shit
@@ -71,14 +71,14 @@ public class AutoCrystalPlus extends Module {
     Setting antiWeakness;
     Setting nodesync;
     Setting place;
-	Setting enemyDistance;
+    Setting enemyDistance;
     Setting autoSwitch;
     Setting placeRange;
     Setting minDmg;
     Setting facePlace;
   //  Setting raytrace; also should be on  by default idk why there is an option
     Setting rotate;
-	Setting antiStuck;
+    Setting antiStuck;
     Setting spoofRotations;
     Setting chat;
     Setting rainbow;
@@ -98,7 +98,7 @@ public class AutoCrystalPlus extends Module {
        // OsirisMod.getInstance().settingsManager.rSetting(explode);
         waitTick = new Setting("TickDelay", this, 1, 0, 20.0, true, "AutoCrystalPlusTickDelay");
         OsirisMod.getInstance().settingsManager.rSetting(waitTick);
-		placeSpeed = new Setting("PlaceSpeed", this, 1, 0, 20.0, true, "AutoCrystalPlusPlaceSpeed");
+	placeSpeed = new Setting("PlaceSpeed", this, 1, 0, 20.0, true, "AutoCrystalPlusPlaceSpeed");
         OsirisMod.getInstance().settingsManager.rSetting(placeSpeed);
         range = new Setting("HitRange", this, 5.0, 0.0, 10.0, false, "AutoCrystalPlusHitRange");
         OsirisMod.getInstance().settingsManager.rSetting(range);
@@ -113,7 +113,7 @@ public class AutoCrystalPlus extends Module {
         OsirisMod.getInstance().settingsManager.rSetting(place);
         autoSwitch = new Setting("AutoSwitch", this, true, "AutoCrystalPlusAutoSwitch");
         OsirisMod.getInstance().settingsManager.rSetting(autoSwitch);
-		antiStuck = new Setting("AntiStuck", this, true, "AutoCrystalPlusAntiStuck");
+	antiStuck = new Setting("AntiStuck", this, true, "AutoCrystalPlusAntiStuck");
         OsirisMod.getInstance().settingsManager.rSetting(antiStuck);
         OsirisMod.getInstance().settingsManager.rSetting(noGappleSwitch = new Setting("NoGapSwitch", this, false, "AutoCrystalPlusNoGapSwitch"));
         placeRange = new Setting("PlaceRange", this, 5.0, 0.0, 10.0, false, "AutoCrystalPlusPlaceRange");
@@ -121,8 +121,9 @@ public class AutoCrystalPlus extends Module {
         minDmg = new Setting("MinDamage", this, 5.0, 0.0, 40.0, false, "AutoCrystalPlusMinDamage");
         OsirisMod.getInstance().settingsManager.rSetting(minDmg);
         facePlace = new Setting("FaceplaceHP", this, 6.0, 0.0, 40.0, false, "AutoCrystalPlusFaceplaceHP");
-		enemyDistance = new Setting("EnemyDistance", this, 13.0, 1.0, 50.0, false, "AutoCrystalPlusEnemyDistance");
-		OsirisMod.getInstance().settingsManager.rSetting(enemyDistance);
+        OsirisMod.getInstance().settingsManager.rSetting(facePlace);
+	enemyDistance = new Setting("EnemyDistance", this, 13.0, 1.0, 50.0, false, "AutoCrystalPlusEnemyDistance");
+	OsirisMod.getInstance().settingsManager.rSetting(enemyDistance);
       // raytrace = new Setting("Raytrace", this, false, "AutoCrystalPlusRaytrace");
       // OsirisMod.getInstance().settingsManager.rSetting(raytrace);
         rotate = new Setting("Rotate", this, true, "AutoCrystalPlusRotate");
